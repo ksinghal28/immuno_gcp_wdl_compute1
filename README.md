@@ -34,11 +34,11 @@ The following environment variables are used merely for convenience and should b
 export GROUP=compute-oncology
 export GCS_PROJECT=griffith-lab
 export GCS_SERVICE_ACCOUNT=cromwell-server@$GCS_PROJECT.iam.gserviceaccount.com
-export GCS_BUCKET_NAME=griffith-lab-test-malachi
+export GCS_BUCKET_NAME=griffith-lab-test-kartik
 export GCS_BUCKET_PATH=gs://$GCS_BUCKET_NAME
-export GCS_INSTANCE_NAME=malachi-immuno-test
+export GCS_INSTANCE_NAME=kartik-immuno-test
 export BASE=/storage1/fs1/mgriffit/Active/griffithlab/pipeline_test/
-export WORKING_BASE=$BASE/malachi
+export WORKING_BASE=$BASE/kartik
 export RAW_DATA_DIR=$BASE/raw_data
 export WORKFLOW=immuno.wdl
 export WORKFLOW_PATH=$WORKING_BASE/git/analysis-wdls/definitions/$WORKFLOW
@@ -60,7 +60,7 @@ The following repositories contain: this tutorial (immuno_gcp_wdl), the WDL work
 ```bash
 mkdir git
 cd git
-git clone git@github.com:griffithlab/immuno_gcp_wdl_compute1.git # (v1.0.1)
+git clone git@github.com:ksinghal28/immuno_gcp_wdl_compute1.git # (v1.0.1)
 git clone git@github.com:griffithlab/analysis-wdls.git # (v1.0.0)
 git clone git@github.com:griffithlab/cloud-workflows.git # (v1.3.0)
 ```
@@ -180,7 +180,7 @@ Now log into Google Cromwell VM instance again and copy the YAML file to its loc
 ```bash
 gcloud compute ssh $GCS_INSTANCE_NAME
 
-export GCS_BUCKET_PATH=gs://griffith-lab-test-malachi
+export GCS_BUCKET_PATH=gs://griffith-lab-test-kartik
 export CLOUD_YAML=mcdb024_immuno_cloud-WDL.yaml
 export WORKFLOW=immuno.wdl
 
@@ -228,7 +228,7 @@ After a workflow is run, before exiting and deleting your VM, make sure that the
 First determine you WORKFLOW_ID. This can be done several ways. If the run was successful it should be reported at the bottom of the cromwell log as "$WORKFLOW_ID  completed with status Succeeded". Or you find it by the name of the directory where your run was stored in the Google bucket. Both of these approaches are illustrated here:
 
 ```bash
-export GCS_BUCKET_PATH=gs://griffith-lab-test-malachi
+export GCS_BUCKET_PATH=gs://griffith-lab-test-kartik
 gsutil ls $GCS_BUCKET_PATH/cromwell-executions/immuno/
 
 journalctl -u cromwell | tail | grep "Workflow actor"
